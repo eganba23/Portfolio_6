@@ -13,6 +13,9 @@ library(dsbox)
 library(mosaicData) 
 
 #datasets
+
+
+
 plastic_waste <- read.csv("data/plastic-waste.csv")
 nobel <- read_csv("data/nobel.csv")
 states <- read_csv("data/states.csv")
@@ -72,6 +75,72 @@ staff_long <- staff %>%
 
 ```
 pivot_longer() is useful for changing datasets from wide to long. The first argument is the data. The second argument, cols, is where you specify which columns to pivot into longer format – in this case all columns except for the faculty_type. The third argument, names_to, is a string specifying the name of the column to create from the data stored in the column names of data – in this case year.
+
+## Input - tibble()
+string input should go in qutations while numbers would be input the same.
+```{r tibble}
+
+Name_of_table <- tribble(
+  ~IV1, ~IV2, ~IV3,
+  "score","score","score"
+)
+
+#example
+Kansas_Mask <- tribble(
+  ~date, ~count, ~mask_status,
+  "7/12", 25.5, "mask",
+  "7/13", 19.8, "mask",
+  "7/14", 19.7, "mask",
+  "7/15", 20.5, "mask",
+  "7/12", 9.8, "no mask",
+  "7/13", 9.2, "no mask",
+  "7/14", 9.5, "no mask",
+  "7/15", 9.8, "no mask"
+)
+```
+
+
+## Functions - function()
+
+```{r function}
+
+function_name <- function(thing_you_change){
+  
+  #function pulled from lab 8 scripts
+   page <- read_html(url)
+  
+  # scrape titles
+  titles <- page %>%
+    html_nodes(".iteminfo") %>%
+    html_node("h3 a") %>%
+    html_text() %>%
+    str_squish()
+  
+  # scrape links
+  links <- page %>%
+    html_nodes(".iteminfo") %>%
+    html_node("h3 a") %>%
+    html_attr("href") %>%
+    str_replace(".", "collections.ed.ac.uk")
+  
+  
+  # scrape artists 
+  artists <- page %>%
+    html_nodes(".iteminfo") %>%
+    html_node(".artist") %>%
+    html_text() %>%
+    str_squish()
+  
+  # create and return tibble
+  tibble(
+    title = titles,
+    artist = artists,
+    link = links
+  )
+  
+}
+
+```
 
 ## ggplot and graphing
 
@@ -169,7 +238,8 @@ labs(
 ```
 
 ### Break down graphs by levels of a variable - facet_wrap()
-place the variable you want to be represented by the different graphs inside: (~variable of interest)
+
+Place the variable you want to be represented by the different graphs inside: (~variable of interest). Something to note is that the axes You can input (scale = "free") to un
 ```{r set up for facet, include = FALSE}
 nobel_living <- nobel %>%
  filter(country != "NA" & gender != "org" & is.na(died_date))
@@ -221,7 +291,7 @@ staff_long %>%
 ```
 
 ### Changing parts of your visual - theme()
-allows you to change axes, legends, the visuals, etc.
+allows you to change axes, legends, the visuals, etc. You can use angle to change the angle of the axes
 ```{r theme}
 data("Whickham")
 Whickham %>%
@@ -242,11 +312,43 @@ ggplot(aes(
         axis.text = element_text(size = 12),
         legend.title = element_text(size = 15),
         legend.text = element_text(size = 15),
+         axis.text.x = element_text(angle = 45, vjust = 0.5, hjust=.5)
         )
 ```
 
 ### Add text to a graph - geom_col()
 
 
+### Handling categorical data - geom_jitter()
+
+``` {r geom_jitter}
+
+
+attractive_score <- evals %>%
+  ggplot(aes(
+    x = score,
+    y = bty_avg
+  ))+
+  labs(
+    x = "Score",
+    y = "Beauty rating",
+    title = "Relationship between professor rating and attractiveness",
+    subtitle = "Average professor evaluation score: (1) very unsatisfactory - (5) excellent"
+  )
+
+attractive_score + geom_smooth(se = FALSE, color = "black", span = 1)
+
+attractive_score + geom_point() + geom_smooth(se = FALSE, color = "black", span = .5)
+
+attractive_score + geom_jitter(width = .05) + geom_smooth(se = FALSE, color = "black", span = .5)
+
+
+```
+
+
 ### Line of best fit - geom_smooth()
 
+
+## Other useful functions
+
+![Caption](File Name) - Lets you embed an image
