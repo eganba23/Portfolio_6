@@ -1,7 +1,7 @@
 ---
 title: "Piece_6"
 author: "Benjamin Egan"
-date: "`r format(Sys.time(), '%B %d %Y')`"
+date: "3/20/25"
 output: html_document
 ---
 
@@ -11,7 +11,7 @@ library(tidyverse)
 library(ggplot2)
 library(dsbox)
 library(mosaicData) 
-library(moments)
+library(openintro)
 
 #datasets
 plastic_waste <- read.csv("data/plastic-waste.csv")
@@ -20,9 +20,13 @@ states <- read_csv("data/states.csv")
 staff <- read_csv("data/instructional-staff.csv")
 ```
 
+#### *This is a living document. As of right now, this document was updated on [3/20/2025]. The current date is:
+`r format(Sys.time(), '%B %d %Y')`
+
+
 # Useful Lines of Code
 
-Up until this point in time, I have been looking back through each of my labs to pull and adapt lines of code. In this piece, I will be walking through all of my labs and extracting the helpful functions I have been repeatedly using.
+Up until this point in time, I have been looking back through each of my labs to pull and adapt lines of code. In this piece, I will be walking through all of my labs and extracting the helpful functions I have been repeatedly using. Each section of code is an example of how I have used each function. You can also examine the description r provides by plugging ?function_name() into the console
 
 ## Filter()
 
@@ -49,7 +53,7 @@ nobel_living <- nobel %>%
 ```
 Here mutate was used to create a binary categorical variable. It kept USA as USA and changed everything else to "other"
 
-#### List - c(a,b,c,etc.)
+#### List - c(a, b, c, etc.)
 ```{r mutate lab 4}
 
 lq_USA <- laquinta %>%
@@ -318,7 +322,7 @@ ggplot(aes(
 
 
 ### Handling categorical data - geom_jitter()
-
+This data is a likert scale, hiding the true amount of data. Can use jitter to shift datapoints vertical (height =) or horizontal (width =).
 ``` {r geom_jitter}
 
 
@@ -334,11 +338,9 @@ attractive_score <- evals %>%
     subtitle = "Average professor evaluation score: (1) very unsatisfactory - (5) excellent"
   )
 
-attractive_score + geom_smooth(se = FALSE, color = "black", span = 1)
+attractive_score + geom_point()
 
-attractive_score + geom_point() + geom_smooth(se = FALSE, color = "black", span = .5)
-
-attractive_score + geom_jitter(width = .05) + geom_smooth(se = FALSE, color = "black", span = .5)
+attractive_score + geom_jitter(width = .05, alpha = .6)
 
 
 ```
@@ -347,6 +349,12 @@ attractive_score + geom_jitter(width = .05) + geom_smooth(se = FALSE, color = "b
 ### Line of best fit - geom_smooth()
 
 
+
+```{rsmooth}
+attractive_score + geom_smooth(se = FALSE, color = "black", span = 1)
+
+```
+
 ## Other useful functions
 
-![Caption](File Name) - Lets you embed an image
+!(Here is where your caption should be, but change these parentheses to [])(File Name) - Lets you embed an image
