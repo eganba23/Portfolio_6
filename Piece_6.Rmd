@@ -12,10 +12,8 @@ library(ggplot2)
 library(dsbox)
 library(mosaicData) 
 
+
 #datasets
-
-
-
 plastic_waste <- read.csv("data/plastic-waste.csv")
 nobel <- read_csv("data/nobel.csv")
 states <- read_csv("data/states.csv")
