@@ -20,7 +20,7 @@ states <- read_csv("data/states.csv")
 staff <- read_csv("data/instructional-staff.csv")
 ```
 
-#### *This is a living document. As of right now, this document was updated on [3/20/2025]. The current date is:
+#### *This is a living document. As of right now, this document was updated on [3/26/2025]. The current date is:
 `r format(Sys.time(), '%B %d %Y')`
 
 
