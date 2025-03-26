@@ -28,6 +28,16 @@ staff <- read_csv("data/instructional-staff.csv")
 
 Up until this point in time, I have been looking back through each of my labs to pull and adapt lines of code. In this piece, I will be walking through all of my labs and extracting the helpful functions I have been repeatedly using. Each section of code is an example of how I have used each function. You can also examine the description r provides by plugging ?function_name() into the console
 
+## Break lines in the r code - < br/>
+
+This can be used to clean up the R markdown files. It allows for two adjacent lines to not end up on the exact same line
+
+This is without the break.
+This second sentence was written on a separate line but doesn't appear that way.
+
+This is with the break.<br/>
+It looks the same as it is written in the R markdown file and looks cleaner than adding a purposeful space.
+
 ## Filter()
 
 ```{r filter}
@@ -150,10 +160,10 @@ A goal of this course was to get students comfortable graphing data. was to get 
 
 #### Generally useful functions
 
-theme_bw() removes all gray from the graph.
-labs() adds titles and labesl to the graphs.
-scale_color_manual() allows for you to manually set colors.
-fct_reorder(data, variable) allows for you to reverse the order of a variable.
+theme_bw() removes all gray from the graph. <br/>
+labs() adds titles and labesl to the graphs. <br/>
+scale_color_manual() allows for you to manually set colors. <br/>
+fct_reorder(data, variable) allows for you to reverse the order of a variable. <br/>
 
 ### Histogram - geom_histogram()
 binwidth changes how many observations fit within each bar.
