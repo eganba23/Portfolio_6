@@ -28,16 +28,6 @@ staff <- read_csv("data/instructional-staff.csv")
 
 Up until this point in time, I have been looking back through each of my labs to pull and adapt lines of code. In this piece, I will be walking through all of my labs and extracting the helpful functions I have been repeatedly using. Each section of code is an example of how I have used each function. You can also examine the description r provides by plugging ?function_name() into the console
 
-## Break lines in the r code - < br/>
-
-This can be used to clean up the R markdown files. It allows for two adjacent lines to not end up on the exact same line
-
-This is without the break.
-This second sentence was written on a separate line but doesn't appear that way.
-
-This is with the break.<br/>
-It looks the same as it is written in the R markdown file and looks cleaner than adding a purposeful space.
-
 ## Filter()
 
 ```{r filter}
@@ -368,3 +358,13 @@ attractive_score + geom_smooth(se = FALSE, color = "black", span = 1)
 ## Other useful functions
 
 !(Here is where your caption should be, but change these parentheses to [])(File Name) - Lets you embed an image
+
+##### Break lines in the r code - < br/>
+
+This can be used to clean up the R markdown files. It allows for two adjacent lines to not end up on the exact same line
+
+This is without the break.
+This second sentence was written on a separate line but doesn't appear that way.
+
+This is with the break.<br/>
+It looks the same as it is written in the R markdown file and looks cleaner than adding a purposeful space.
